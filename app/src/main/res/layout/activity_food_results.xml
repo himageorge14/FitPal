@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context=".FoodResults">-->
+
+<!--</android.support.constraint.ConstraintLayout>-->
+
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:backgroundTint="@color/colorAccentSecondary"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:columnCount="2"
+    android:rowCount="11"
+    android:padding="5dp"
+    android:descendantFocusability="beforeDescendants"
+    android:fitsSystemWindows="true"
+    tools:context=".FoodResults">
+
+    <TextView
+
+        android:text="Name :"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="0"
+        android:layout_row="0"
+        android:padding="8dp"
+        />
+    <TextView
+        android:id="@+id/FoodNameId"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="1"
+        android:layout_row="0"
+        android:padding="8dp"
+        />
+
+    <TextView
+        android:text="Carbs :"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:padding="8dp"
+        />
+    <TextView
+        android:id="@+id/CarbId"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:padding="8dp"
+        />
+
+    <TextView
+        android:text="Energy :"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="0"
+        android:layout_row="2"
+        android:padding="8dp"
+        />
+    <TextView
+        android:id="@+id/EnergyId"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="1"
+        android:layout_row="2"
+        android:padding="8dp"
+        />
+
+    <TextView
+        android:text="Fat :"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="0"
+        android:layout_row="3"
+        android:padding="8dp"
+        />
+    <TextView
+        android:id="@+id/FatId"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="1"
+        android:layout_row="3"
+        android:padding="8dp"
+        />
+
+    <TextView
+        android:text="Calcium :"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="0"
+        android:layout_row="4"
+        android:padding="8dp"
+        />
+    <TextView
+        android:id="@+id/CalciumId"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="1"
+        android:layout_row="4"
+        android:padding="8dp"
+        />
+
+    <TextView
+        android:text="Iron :"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="0"
+        android:layout_row="5"
+        android:padding="8dp"
+        />
+    <TextView
+        android:id="@+id/IronId"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="1"
+        android:layout_row="5"
+        android:padding="8dp"
+        />
+
+    <TextView
+        android:text="Fibre :"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="0"
+        android:layout_row="6"
+        android:padding="8dp"
+        />
+    <TextView
+        android:id="@+id/FibreId"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="1"
+        android:layout_row="6"
+        android:padding="8dp"
+        />
+
+
+    <TextView
+        android:text="Minerals :"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="0"
+        android:layout_row="7"
+        android:padding="8dp"
+        />
+    <TextView
+        android:id="@+id/MineralsId"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="1"
+        android:layout_row="7"
+        android:padding="8dp"
+        />
+
+    <TextView
+        android:text="Moisture :"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="0"
+        android:layout_row="8"
+        android:padding="8dp"
+        />
+    <TextView
+        android:id="@+id/MoistureId"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="1"
+        android:layout_row="8"
+        android:padding="8dp"
+        />
+
+    <TextView
+        android:text="Protein :"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="0"
+        android:layout_row="9"
+        android:padding="8dp"
+        />
+    <TextView
+        android:id="@+id/ProteinId"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="1"
+        android:layout_row="9"
+        android:padding="8dp"
+        />
+
+    <TextView
+        android:text="Phosphorous :"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="0"
+        android:layout_row="10"
+        android:padding="8dp"
+        />
+    <TextView
+        android:id="@+id/PhosphorousId"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_column="1"
+        android:layout_row="10"
+        android:padding="8dp"
+        />
+
+
+
+
+
+
+
+</GridLayout>
