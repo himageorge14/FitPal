@@ -84,6 +84,7 @@ public class VoiceInput extends AppCompatActivity {
                         public void onClick(View view) {
                             Intent i=new Intent(getApplicationContext(),FoodResults.class);
                             i.putExtra("foodresult",result.get(0));
+                            i.putExtra("page","Voice");
                             startActivity(i);
                         }
                     });

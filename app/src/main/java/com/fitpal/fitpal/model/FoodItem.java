@@ -1,4 +1,4 @@
-package com.fitpal.fitpal;
+package com.fitpal.fitpal.model;
 
 public class FoodItem {
     public String Calcium;
