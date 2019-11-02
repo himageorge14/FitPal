@@ -31,6 +31,6 @@
         app:line_speed="6"
         app:line_width="4"
         app:square_height="400"
-        app:square_width="300" />
+        app:square_width="330" />
 
 </RelativeLayout>

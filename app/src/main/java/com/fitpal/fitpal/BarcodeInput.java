@@ -14,6 +14,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.vision.barcode.Barcode;
+import com.google.gson.JsonObject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -74,16 +75,39 @@ public class BarcodeInput extends AppCompatActivity implements BarcodeReader.Bar
                         //Toast.makeText(BarcodeInput.this,response,Toast.LENGTH_LONG).show();
                         try{
 
-                            Log.d("resss",String.valueOf(response));
+                            //Log.d("resss",String.valueOf(response));
                             //JSONArray ja = jsonObject.getJSONArray("data");
                             JSONObject j=response.getJSONObject("product");
                             brand=j.get("brands").toString();
                             Log.d("bbb",brand);
+//                            JSONObject j2=j.getJSONObject("images");
+//                            Log.d("img",String.valueOf(j2));
+//                            JSONObject j3=j2.getJSONObject("ingredients_fr");
+//                            Log.d("ifr",String.valueOf(j3));
+//                            JSONObject j4=j3.getJSONObject("nutriscore_points");
+//                            Log.d("nutr",String.valueOf(j4));
+
+                            String size=j.get("serving_size").toString();
+                            String product=j.get("product_name_fr").toString();
+                            String ingr=j.get("ingredients_text").toString();
+                            String nutrScore=j.get("nutrition_score_debug").toString();
+
 
                             String code=barcode.displayValue;
 
-                            Toast.makeText(getApplicationContext(),String.valueOf(response),Toast.LENGTH_LONG).show();
-                            Toast.makeText(getApplicationContext(),brand,Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getApplicationContext(),String.valueOf(response),Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getApplicationContext(),brand,Toast.LENGTH_LONG).show();
+
+                            Intent i=new Intent(getApplicationContext(),BarcodeResults.class);
+                            i.putExtra("page","barcode");
+                            i.putExtra("brand",brand);
+                            i.putExtra("size",size);
+                            i.putExtra("product",product);
+                            i.putExtra("ingr",ingr);
+                            i.putExtra("nutr",nutrScore);
+                            i.putExtra("barcode",barcode.displayValue);
+                            startActivity(i);
+                            finish();
 
 
                         } catch (JSONException e)

@@ -49,13 +49,13 @@ public class FoodResults extends AppCompatActivity {
 
 
     private TextView name,carbs,energy,fat,protein,mineral,calcium,fibre,calories,remarks;
-    private Button save,readAgain;
+    private Button readAgain;
     String foodToSearch,date,page,cal;
     DatabaseReference databaseReference,databaseReferenceUserMeals;
-    FoodItem print=new FoodItem();
-    UserMeal um=new UserMeal();
-    float consumed=0;
-    int count=1;
+    FoodItem print;
+    UserMeal um;
+    float consumed;
+    int count;
 
     static String x_app_id, x_app_key, x_remote_user_id;
     private RequestQueue mQueue;
@@ -64,6 +64,7 @@ public class FoodResults extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_results);
+
 
         name=findViewById(R.id.FoodNameId);
         carbs=findViewById(R.id.CarbId);
@@ -84,11 +85,16 @@ public class FoodResults extends AppCompatActivity {
 
         foodToSearch=in.getStringExtra("foodresult");
         page=in.getStringExtra("page");
+        consumed=in.getFloatExtra("consumned",0);
+        count=in.getIntExtra("count",1);
+
+        Log.d("con",String.valueOf(consumed));
+        Log.d("counttt",String.valueOf(count));
 
         Log.d("outtttt",foodToSearch);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Foods");
-        databaseReferenceUserMeals=FirebaseDatabase.getInstance().getReference("UserMeals").child(String.valueOf(KeyUserMealsFromDB));
+        //databaseReference = FirebaseDatabase.getInstance().getReference("Foods");
+       databaseReferenceUserMeals=FirebaseDatabase.getInstance().getReference("UserMeals").child(String.valueOf(KeyUserMealsFromDB));
 
 
         x_app_id = "d2972203";
@@ -106,6 +112,25 @@ public class FoodResults extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        UserMeal t1=new UserMeal();
+
+
+        print=new FoodItem();
+//        print.Name="";
+//        print.Carbos="0";
+//        print.Iron="0";
+//        print.Phosphorous="0";
+//        print.Fibre="0";
+//        print.Calcium="0";
+//        print.Minerals="0";
+//        print.Protein="0";
+//        print.Fat="0";
+//        print.Energy="0";
+//        print.Moisture="0";
+        um=new UserMeal();
+
+
 
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,url,jsonObject1, new Response.Listener<JSONObject>() {
             @Override
@@ -127,8 +152,22 @@ public class FoodResults extends AppCompatActivity {
                         Log.d("objjj",String.valueOf(productFood.get("nf_p").toString()));
                         Log.d("obj2",String.valueOf(productFood.get("nf_total_fat").toString()));
 
-                        print.Name=productFood.getString("food_name").toString();
-                        print.Carbos=productFood.get("nf_total_carbohydrate").toString();
+                        print.Name=print.Name+productFood.getString("food_name");
+
+                        Log.d("nnna",print.Name);
+//                        print.Carbos=String.valueOf(Float.parseFloat(print.Carbos)+Float.parseFloat(productFood.get("nf_total_carbohydrate").toString()));
+//
+//                        print.Energy=String.valueOf(Float.parseFloat(print.Energy)+Float.parseFloat(productFood.get("nf_p").toString()));;
+//                        print.Fat=String.valueOf(Float.parseFloat(print.Fat)+Float.parseFloat(productFood.get("nf_total_fat").toString()));
+//                        Log.d("ccac",print.Fat);
+//                        print.Protein=String.valueOf(Float.parseFloat(print.Protein)+Float.parseFloat(productFood.get("nf_protein").toString()));
+//                        print.Minerals=String.valueOf(Float.parseFloat(print.Minerals)+Float.parseFloat(productFood.get("nf_potassium").toString()));
+//                        print.Calcium=String.valueOf(Float.parseFloat(print.Calcium)+Float.parseFloat(productFood.get("nf_saturated_fat").toString()));
+//                        print.Fibre=String.valueOf(Float.parseFloat(print.Fibre)+Float.parseFloat(productFood.get("nf_dietary_fiber").toString()));
+//                        cal=String.valueOf(Float.parseFloat(cal)+Float.parseFloat(productFood.get("nf_calories").toString()));
+//                        Log.d("callo",cal.toString());
+
+
                         print.Energy=productFood.get("nf_p").toString();
                         print.Fat=productFood.get("nf_total_fat").toString();
                         print.Protein=productFood.get("nf_protein").toString();
@@ -137,10 +176,8 @@ public class FoodResults extends AppCompatActivity {
                         print.Fibre=productFood.get("nf_dietary_fiber").toString();
                         cal=productFood.get("nf_calories").toString();
 
-                        print.Phosphorous="0";
-                        print.Iron="0";
 
-                        name.setText(String.valueOf(productFood.get("food_name").toString()));
+                        name.setText(foodToSearch);
                         carbs.setText(String.valueOf(productFood.get("nf_total_carbohydrate").toString()));
                         energy.setText(String.valueOf(productFood.get("nf_p").toString()));
                         fat.setText(String.valueOf(productFood.get("nf_total_fat").toString()));
@@ -149,8 +186,18 @@ public class FoodResults extends AppCompatActivity {
                         calcium.setText(String.valueOf(productFood.get("nf_saturated_fat").toString()));
                         fibre.setText(String.valueOf(productFood.get("nf_dietary_fiber").toString()));
                         calories.setText(String.valueOf(productFood.get("nf_calories").toString()));
+////
+//                        name.setText(name.getText()+","+String.valueOf(print.Name));
+//                        carbs.setText(carbs.getText()+","+String.valueOf(print.Carbos).toString());
+//                        energy.setText(energy.getText()+","+String.valueOf(print.Energy));
+//                        fat.setText(fat.getText()+","+String.valueOf(print.Fat));
+//                        protein.setText(protein.getText()+","+String.valueOf(print.Protein));
+//                        mineral.setText(mineral.getText()+","+String.valueOf(print.Minerals));
+//                        calcium.setText(calcium.getText()+","+String.valueOf(print.Calcium));
+//                        fibre.setText(fibre.getText()+","+String.valueOf(print.Fibre));
+//                        calories.setText(calories.getText()+","+String.valueOf(cal));
 
-                        date= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                       date= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
 
 
@@ -160,13 +207,36 @@ public class FoodResults extends AppCompatActivity {
                         um.Fat=String.valueOf(productFood.get("nf_total_fat").toString());
                         um.Fibre=String.valueOf(productFood.get("nf_dietary_fiber").toString());
                         um.Iron=print.Iron;
-                        um.MealName=String.valueOf(productFood.get("food_name").toString());
+                        um.MealName=foodToSearch;
                         um.Phosphorous=print.Phosphorous;
                         um.Protein=String.valueOf(productFood.get("nf_protein").toString());
                         um.Calories=String.valueOf(productFood.get("nf_calories").toString());
+                        Log.d("ucal",um.Calories);
+
+//                        um.Calcium=String.valueOf(print.Calcium);
+//                        um.Carb=String.valueOf(print.Carbos);
+//                        um.Date=date;
+//                        um.Fat=String.valueOf(print.Fat);
+//                        um.Fibre=String.valueOf(print.Fibre);
+//                        um.Iron=print.Iron;
+//                        um.MealName=String.valueOf(print.Name);
+//                        um.Phosphorous=print.Phosphorous;
+//                        um.Protein=String.valueOf(print.Protein);
+//                        um.Calories=String.valueOf(cal);
+
+
 
 
                     }
+
+                    databaseReferenceUserMeals.child(String.valueOf(date+"-"+count)).setValue(um);
+                    if(consumed<GoalFromDB){
+                        remarks.setText("You have "+(GoalFromDB-consumed)+ " calories left");
+                    }
+                    else{
+                        remarks.setText("Oh no, you have reached the calorie limit");
+                    }
+
 
 
                 } catch (Exception e) {
@@ -195,75 +265,6 @@ public class FoodResults extends AppCompatActivity {
 
         mQueue.add(jsonObjectRequest);
 
-//                name.setText(print.Name);
-//              carbs.setText(print.Carbos);
-//              energy.setText(print.Energy);
-//               fat.setText(print.Fat);
-//               protein.setText(print.Protein);
-//               mineral.setText(print.Minerals);
-//               calcium.setText(print.Calcium);
-//                fibre.setText(print.Fibre);
-//                date= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-//
-//                um=new UserMeal();
-//
-//                um.Calcium=print.Calcium;
-//                um.Carb=print.Carbos;
-//                um.Date=date;
-//                um.Fat=print.Fat;
-//                um.Fibre=print.Fibre;
-//                um.Iron=print.Iron;
-//                um.MealName=print.Name;
-//                um.Phosphorous=print.Phosphorous;
-//                um.Protein=print.Protein;
-//                um.Calories=cal;
-
-
-
-        Log.d("sttt",String.valueOf(um.Calories));
-        date= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-
-
-        databaseReferenceUserMeals.addValueEventListener(new ValueEventListener() {
-            UserMeal utemp=new UserMeal();
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-
-                    count=1;
-                    consumed=0;
-                     utemp= dataSnapshot1.getValue(UserMeal.class);
-
-
-                    if(utemp.Date.contains(date)){
-
-                        consumed+=Float.parseFloat(utemp.Calories);
-                        count++;
-                    }
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        Log.d("ddd",String.valueOf(date+" "+count));
-        databaseReferenceUserMeals.child(String.valueOf(date+"-"+count)).setValue(um);
-
-        //Log.d("counsumedddddTotal",String.valueOf(consumed+um.Calories));
-
-        //Float c=Float.parseFloat(um.Calories)+consumed;
-        if(consumed<GoalFromDB){
-            remarks.setText("You have "+(GoalFromDB-consumed)+ " calories left");
-        }
-        else{
-            remarks.setText("Oh no, you have reached the calorie limit");
-        }
 
 
         readAgain.setOnClickListener(new View.OnClickListener() {
@@ -274,13 +275,13 @@ public class FoodResults extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
+                else{
+                    Intent i=new Intent(getApplicationContext(),BarcodeInput.class);
+                    startActivity(i);
+                    finish();
+                }
             }
         });
-
-
-
-
-
 
     }
 
