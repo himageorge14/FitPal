@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--green-->
+    <color name="lightgreen">#32ff7e</color>
+    <color name="mediumgreen">#05c46b</color>
+<!--blue-->
+    <color name="lightblue">#18dcff</color>
+    <color name="mediumblue">#17c0eb</color>
+    <color name="darkblue">#396FDB</color>
+<!--red-->
+    <color name="lightred">#ff4d4d</color>
+    <color name="mediumred">#ff3838</color>
+<!--grey-->
+    <color name="faintgrey">#f1f2f6</color>
+    <color name="lightgrey">#dfe4ea</color>
+    <color name="mediumgrey">#747d8c</color>
+    <color name="black">#000000</color>
+
+
+
+
     <color name="colorPrimary">#26a5d7</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>

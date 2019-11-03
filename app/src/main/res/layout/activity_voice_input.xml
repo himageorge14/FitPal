@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_gradient_start"
+    android:background="@color/faintgrey"
     android:orientation="vertical" >
 
     <TextView
@@ -40,19 +40,32 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/tap_on_mic"
-            android:textColor="@color/white"
             android:textSize="15dp"
             android:textStyle="normal" />
     </LinearLayout>
 
+
     <Button
         android:id="@+id/resultOKId"
+        android:text="OK"
+        android:textColor="@color/white"
         android:visibility="invisible"
+        android:background="@drawable/green_button"
+        android:layout_marginTop="180dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="181dp"
-        android:text="OK" />
+        />
+
+<!--    <Button-->
+<!--        android:id="@+id/resultOKId"-->
+<!--        android:visibility="invisible"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="181dp"-->
+<!--        android:text="OK" />-->
 
 </RelativeLayout>

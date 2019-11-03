@@ -12,326 +12,337 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:backgroundTint="@color/bg_gradient_start"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:columnCount="2"
     android:rowCount="11"
-    android:padding="5dp"
+    android:padding="10dp"
     android:descendantFocusability="beforeDescendants"
     android:fitsSystemWindows="true"
     tools:context=".FoodResults">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-
-            android:text="Name :"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:padding="8dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
-        <TextView
-            android:id="@+id/FoodNameId"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_column="1"
-            android:layout_row="0"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="8dp"
-            />
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:text="Carbs :"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_column="0"
-            android:layout_row="1"
-            android:padding="8dp"
-            />
-        <TextView
-            android:id="@+id/CarbId"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:layout_row="1"
-            android:padding="8dp"
-            />
-
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-        android:text="Energy :"
-        android:textColor="@color/white"
-        android:textSize="15dp"
-        android:layout_column="0"
-        android:layout_row="2"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-        android:padding="8dp"
-        />
-        <TextView
-            android:id="@+id/EnergyId"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_column="1"
-            android:layout_row="2"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="8dp"
-            />
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:text="Fat :"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_column="0"
-            android:layout_row="3"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="8dp"
-            />
-        <TextView
-            android:id="@+id/FatId"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_column="1"
-            android:layout_row="3"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="8dp"
-            />
-
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:text="Calcium :"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_column="0"
-            android:layout_row="4"
-            android:padding="8dp"
-            />
-        <TextView
-            android:id="@+id/CalciumId"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_width="match_parent"
-            android:layout_column="1"
-            android:layout_row="4"
-            android:padding="8dp"
-            />
-
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:text="Fibre :"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_column="0"
-            android:layout_row="5"
-            android:padding="8dp"
-            />
-        <TextView
-            android:id="@+id/FibreId"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_width="match_parent"
-            android:layout_column="1"
-            android:layout_row="5"
-            android:padding="8dp"
-            />
-
-
-
-    </LinearLayout>
-
-
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:text="Minerals :"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_column="0"
-            android:layout_row="6"
-            android:padding="8dp"
-            />
-        <TextView
-            android:id="@+id/MineralsId"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:layout_row="6"
-            android:padding="8dp"
-            />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
     <TextView
-        android:text="Protein :"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="15dp"
-        android:layout_column="0"
-        android:layout_row="7"
-        android:padding="8dp"
-        />
-    <TextView
-        android:id="@+id/ProteinId"
-        android:textColor="@color/white"
-        android:textSize="15dp"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_column="1"
-        android:layout_row="7"
-        android:padding="8dp"
-        />
+        android:text="Meal's macro break-down"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_margin="20dp"
+        >
 
-
-    </LinearLayout>
-
-
+    </TextView>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:background="@drawable/green_border"
+        android:layout_margin="20dp"
+        >
 
-        <TextView
-            android:text="Calories :"
-            android:textColor="@color/white"
-            android:layout_height="wrap_content"
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:textSize="15dp"
-            android:layout_column="0"
-            android:layout_row="8"
-            android:padding="8dp"
-            />
-        <TextView
-            android:id="@+id/CaloriesId"
-            android:textColor="@color/white"
-            android:textSize="15dp"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:text="Name :"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+            <TextView
+                android:id="@+id/FoodNameId"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="1"
+                android:layout_row="0"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:layout_row="8"
-            android:padding="8dp"
-            />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="Carbs :"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="1"
+                android:padding="8dp"
+                />
+            <TextView
+                android:id="@+id/CarbId"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:layout_row="1"
+                android:padding="8dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="Energy :"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                />
+            <TextView
+                android:id="@+id/EnergyId"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="1"
+                android:layout_row="2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="Fat :"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="3"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                />
+            <TextView
+                android:id="@+id/FatId"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="1"
+                android:layout_row="3"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="Fibre :"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="5"
+                android:padding="8dp"
+                />
+            <TextView
+                android:id="@+id/FibreId"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_column="1"
+                android:layout_row="5"
+                android:padding="8dp"
+                />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="Minerals :"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="6"
+                android:padding="8dp"
+                />
+            <TextView
+                android:id="@+id/MineralsId"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:layout_row="6"
+                android:padding="8dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="Protein :"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="7"
+                android:padding="8dp"
+                />
+            <TextView
+                android:id="@+id/ProteinId"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:layout_row="7"
+                android:padding="8dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="Calories :"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="8"
+                android:padding="8dp"
+                />
+            <TextView
+                android:id="@+id/CaloriesId"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:layout_row="8"
+                android:padding="8dp"
+                />
+
+
+        </LinearLayout>
+
+        <!--calcium-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            >
+
+            <TextView
+                android:text="Calcium :"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="4"
+                android:padding="8dp"
+                />
+            <TextView
+                android:id="@+id/CalciumId"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_column="1"
+                android:layout_row="4"
+                android:padding="8dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="horizontal"
+            android:background="@color/faintgrey">
+
+            <TextView
+                android:text="REMARKS : "
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="9"
+                android:padding="8dp"
+                />
+
+            <TextView
+                android:id="@+id/RemarksID"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:layout_row="9"
+                android:padding="8dp"
+                />
+
+
+        </LinearLayout>
+
 
 
     </LinearLayout>
 
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:text="Remarks : "
-            android:textColor="@color/white"
-
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="15dp"
-            android:layout_column="0"
-            android:layout_row="9"
-            android:padding="8dp"
-            />
-
-        <TextView
-            android:id="@+id/RemarksID"
-            android:text=""
-            android:textColor="@color/white"
-            android:textSize="15dp"
-
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:layout_row="9"
-            android:padding="8dp"
-            />
-
-
-    </LinearLayout>
 
 
 
@@ -345,7 +356,8 @@
             android:layout_margin="40dp"
             android:layout_column="0"
             android:layout_row="10"
-            android:padding="8dp"
+            android:padding="10dp"
+            android:background="@drawable/green_button"
             android:layout_height="wrap_content"
             android:layout_width="match_parent" />
 
