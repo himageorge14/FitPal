@@ -2,7 +2,7 @@
 <resources>
 <!--green-->
     <color name="lightgreen">#32ff7e</color>
-    <color name="mediumgreen">#3ae374</color>
+    <color name="mediumgreen">#05c46b</color>
 <!--blue-->
     <color name="lightblue">#18dcff</color>
     <color name="mediumblue">#17c0eb</color>

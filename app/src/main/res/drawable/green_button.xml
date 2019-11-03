@@ -7,7 +7,7 @@
         android:angle="180"
         android:centerX="100%"
         android:centerColor="@color/lightgreen"
-        android:startColor="@color/lightgreen"
+        android:startColor="@color/mediumgreen"
         android:endColor="@color/mediumgreen"
         android:type="linear"
         />
