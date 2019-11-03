@@ -26,7 +26,7 @@
     <info.androidhive.barcode.ScannerOverlay
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_gradient_start"
+        android:background="@color/mediumgrey"
         app:line_color="#7323DC"
         app:line_speed="6"
         app:line_width="4"
