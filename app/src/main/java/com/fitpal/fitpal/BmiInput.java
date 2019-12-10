@@ -1,15 +1,25 @@
 package com.fitpal.fitpal;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.fitpal.fitpal.model.Users;
 import com.google.firebase.database.DataSnapshot;
@@ -24,14 +34,15 @@ import java.util.Random;
 import static com.fitpal.fitpal.Login.Email;
 import static com.fitpal.fitpal.Login.Name;
 
-public class BmiInput extends AppCompatActivity {
+public class BmiInput extends AppCompatActivity{
 
     EditText age,weight,height;
     TextView welcomeText;
-    Spinner gender;
+    Spinner gender,goal;
     int ageNo;
     float heightNo,weightNo,bmiVal,goalNo;
-    String genderVal,emailBmi;
+    float bmiActual;
+    String genderVal,emailBmi,goalStr;
     Button submit;
     DatabaseReference databaseUsers;
     ArrayList<Users> usersArrayList;
@@ -39,6 +50,8 @@ public class BmiInput extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_bmi_input);
 
         welcomeText=findViewById(R.id.BMIHiUserID);
@@ -46,7 +59,10 @@ public class BmiInput extends AppCompatActivity {
         weight=findViewById(R.id.WeightId);
         height=findViewById(R.id.HeightId);
         gender=findViewById(R.id.GenderId);
+        goal=findViewById(R.id.GoalId);
         submit=findViewById(R.id.bmiSubmitID);
+
+
 
         usersArrayList=new ArrayList<>();
 
@@ -70,43 +86,137 @@ public class BmiInput extends AppCompatActivity {
         });
 
 
-        submit.setOnClickListener(new View.OnClickListener() {
+        goal.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onTouch(View view, MotionEvent motionEvent) {
 
                 ageNo=Integer.parseInt(String.valueOf(age.getText()));
                 weightNo=Float.parseFloat(String.valueOf(weight.getText()));
                 heightNo=Float.parseFloat(String.valueOf(height.getText()));
                 genderVal=String.valueOf(gender.getSelectedItem());
-                bmiVal=weightNo/(heightNo*heightNo);
-                emailBmi=Email;
 
-                Random r = new Random();
-                int i1 = r.nextInt(7000);
-
-                if(bmiVal>24){
-                    goalNo=1400;
+                //bmr calculation
+                if(genderVal.equalsIgnoreCase("female")){
+                    bmiVal=(float)(655.1+((4.35*2.20462*weightNo)+(4.7*39.3701*heightNo)-(4.7*ageNo)));
                 }
                 else{
-                    goalNo=1600;
+                    bmiVal=(float)(66.47+(6.24*2.20462*weightNo)+(12.7*39.3701*heightNo)-(6.755*ageNo));
+                }
+                emailBmi=Email;
+
+                //x 1.2
+                //bmiVal=(float)(bmiVal*1.2);
+
+                bmiActual=weightNo/(heightNo*heightNo);
+
+                Log.d("bmiii",String.valueOf(bmiVal));
+
+                if(bmiActual<18.5){
+                    Toast.makeText(getApplicationContext(),"We suggest you the Weight gain plan",Toast.LENGTH_LONG).show();
+                }
+                else if(bmiActual>25.9){
+                    Toast.makeText(getApplicationContext(),"We suggest you the Weight loss plan",Toast.LENGTH_LONG).show();
                 }
 
-//                Log.d("emailllbmii",emailBmi);
-//                Log.d("genderrr",genderVal);
-//                Log.d("heighttt",String.valueOf(heightNo));
-//                Log.d("weighttt",String.valueOf(weightNo));
-//                Log.d("ageeee",String.valueOf(ageNo));
-//                Log.d("bmiiiiii",String.valueOf(bmiVal));
-//                Log.d("randdddooom",String.valueOf(i1));
+                goalNo=(float)(bmiVal*1.2);
+
+                return false;
+            }
+        });
 
 
-                String id=String.valueOf(usersArrayList.size()+1);
-                Users u = new Users(ageNo,bmiVal,emailBmi,genderVal,goalNo,heightNo,i1,weightNo);
-                databaseUsers.child(id).setValue(u);
 
-                Intent i=new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(i);
-                finish();
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if(age.getText().toString().equals("") || Integer.parseInt(age.getText().toString())<1 || Integer.parseInt(age.getText().toString())>99){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(BmiInput.this);
+                    builder.setTitle("Please enter a valid age");
+
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                    final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                    LinearLayout.LayoutParams positiveButtonLL = (LinearLayout.LayoutParams) positiveButton.getLayoutParams();
+                    positiveButtonLL.gravity = Gravity.END;
+                    positiveButton.setLayoutParams(positiveButtonLL);
+                }
+                else if(weight.getText().toString().equals("") || Float.parseFloat(weight.getText().toString())<10 || Float.parseFloat(weight.getText().toString())>130){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(BmiInput.this);
+                    builder.setTitle("Please enter a valid weight");
+
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                    final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                    LinearLayout.LayoutParams positiveButtonLL = (LinearLayout.LayoutParams) positiveButton.getLayoutParams();
+                    positiveButtonLL.gravity = Gravity.END;
+                    positiveButton.setLayoutParams(positiveButtonLL);
+                }
+                else if(height.getText().toString().equals("") || Float.parseFloat(height.getText().toString())<0.5 || Float.parseFloat(height.getText().toString())>2.5){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(BmiInput.this);
+                    builder.setTitle("Please enter a valid height");
+
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                    final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                    LinearLayout.LayoutParams positiveButtonLL = (LinearLayout.LayoutParams) positiveButton.getLayoutParams();
+                    positiveButtonLL.gravity = Gravity.END;
+                    positiveButton.setLayoutParams(positiveButtonLL);
+                }
+
+                else{
+
+                    goalStr=String.valueOf(goal.getSelectedItem());
+
+                    if(goalStr.equals("Weight Loss")){
+
+                        goalNo-=500;
+
+                    }
+                    else if(goalStr.equals("Weight Gain")){
+                        goalNo+=500;
+                    }
+                    else{
+                        goalNo=goalNo;
+                    }
+
+                    Random r = new Random();
+                    int i1 = r.nextInt(7000);
+
+
+                    String id=String.valueOf(usersArrayList.size()+1);
+                    Users u = new Users(ageNo,bmiActual,emailBmi,genderVal,goalNo,heightNo,i1,weightNo);
+                    databaseUsers.child(id).setValue(u);
+
+                    Intent i=new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(i);
+                    finish();
+
+
+                }
 
 
             }

@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/BMIHiUserID"
-        android:layout_margin="30dp"
+        android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/green_border"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         >
         <LinearLayout
             android:layout_margin="10dp"
@@ -56,13 +56,13 @@
                 android:text="@string/height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <EditText
                 android:id="@+id/HeightId"
-                android:layout_marginStart="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="in metres"
-                />
+                android:layout_marginStart="20dp"
+                android:hint="in metres" />
 
         </LinearLayout>
 
@@ -106,6 +106,26 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/goal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/GoalId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:entries="@array/goalOptions"
+                android:prompt="@string/promptGoal" />
+
+        </LinearLayout>
+
 
 
     </LinearLayout>
@@ -117,7 +137,7 @@
         android:text="@string/submit"
         android:textColor="@color/white"
         android:textSize="15dp"
-        android:layout_margin="40dp"
+        android:layout_margin="20dp"
         android:layout_column="0"
         android:layout_row="10"
         android:padding="10dp"

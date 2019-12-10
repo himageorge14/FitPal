@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -40,10 +41,13 @@ import java.util.Map;
 import java.util.zip.DeflaterOutputStream;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import static com.fitpal.fitpal.MainActivity.GoalFromDB;
 import static com.fitpal.fitpal.MainActivity.KeyUserMealsFromDB;
+import static com.fitpal.fitpal.VoiceInput.consumed;
+import static com.fitpal.fitpal.VoiceInput.count;
 
 public class FoodResults extends AppCompatActivity {
 
@@ -54,8 +58,9 @@ public class FoodResults extends AppCompatActivity {
     DatabaseReference databaseReference,databaseReferenceUserMeals;
     FoodItem print;
     UserMeal um;
-    float consumed;
-    int count;
+//    float consumed;
+//    int count;
+    float tempCalToSubtract = 0;
 
     static String x_app_id, x_app_key, x_remote_user_id;
     private RequestQueue mQueue;
@@ -64,6 +69,9 @@ public class FoodResults extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_results);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
 
         name=findViewById(R.id.FoodNameId);
@@ -85,11 +93,11 @@ public class FoodResults extends AppCompatActivity {
 
         foodToSearch=in.getStringExtra("foodresult");
         page=in.getStringExtra("page");
-        consumed=in.getFloatExtra("consumned",0);
-        count=in.getIntExtra("count",1);
-
-        Log.d("con",String.valueOf(consumed));
-        Log.d("counttt",String.valueOf(count));
+//        consumed=in.getFloatExtra("consumned",0);
+//        count=in.getIntExtra("count",1);
+//
+//        Log.d("con",String.valueOf(consumed));
+//        Log.d("counttt",String.valueOf(count));
 
         Log.d("outtttt",foodToSearch);
 
@@ -155,17 +163,6 @@ public class FoodResults extends AppCompatActivity {
                         print.Name=print.Name+productFood.getString("food_name");
 
                         Log.d("nnna",print.Name);
-//                        print.Carbos=String.valueOf(Float.parseFloat(print.Carbos)+Float.parseFloat(productFood.get("nf_total_carbohydrate").toString()));
-//
-//                        print.Energy=String.valueOf(Float.parseFloat(print.Energy)+Float.parseFloat(productFood.get("nf_p").toString()));;
-//                        print.Fat=String.valueOf(Float.parseFloat(print.Fat)+Float.parseFloat(productFood.get("nf_total_fat").toString()));
-//                        Log.d("ccac",print.Fat);
-//                        print.Protein=String.valueOf(Float.parseFloat(print.Protein)+Float.parseFloat(productFood.get("nf_protein").toString()));
-//                        print.Minerals=String.valueOf(Float.parseFloat(print.Minerals)+Float.parseFloat(productFood.get("nf_potassium").toString()));
-//                        print.Calcium=String.valueOf(Float.parseFloat(print.Calcium)+Float.parseFloat(productFood.get("nf_saturated_fat").toString()));
-//                        print.Fibre=String.valueOf(Float.parseFloat(print.Fibre)+Float.parseFloat(productFood.get("nf_dietary_fiber").toString()));
-//                        cal=String.valueOf(Float.parseFloat(cal)+Float.parseFloat(productFood.get("nf_calories").toString()));
-//                        Log.d("callo",cal.toString());
 
 
                         print.Energy=productFood.get("nf_p").toString();
@@ -186,16 +183,7 @@ public class FoodResults extends AppCompatActivity {
                         calcium.setText(String.valueOf(productFood.get("nf_saturated_fat").toString()));
                         fibre.setText(String.valueOf(productFood.get("nf_dietary_fiber").toString()));
                         calories.setText(String.valueOf(productFood.get("nf_calories").toString()));
-////
-//                        name.setText(name.getText()+","+String.valueOf(print.Name));
-//                        carbs.setText(carbs.getText()+","+String.valueOf(print.Carbos).toString());
-//                        energy.setText(energy.getText()+","+String.valueOf(print.Energy));
-//                        fat.setText(fat.getText()+","+String.valueOf(print.Fat));
-//                        protein.setText(protein.getText()+","+String.valueOf(print.Protein));
-//                        mineral.setText(mineral.getText()+","+String.valueOf(print.Minerals));
-//                        calcium.setText(calcium.getText()+","+String.valueOf(print.Calcium));
-//                        fibre.setText(fibre.getText()+","+String.valueOf(print.Fibre));
-//                        calories.setText(calories.getText()+","+String.valueOf(cal));
+
 
                        date= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
@@ -213,16 +201,7 @@ public class FoodResults extends AppCompatActivity {
                         um.Calories=String.valueOf(productFood.get("nf_calories").toString());
                         Log.d("ucal",um.Calories);
 
-//                        um.Calcium=String.valueOf(print.Calcium);
-//                        um.Carb=String.valueOf(print.Carbos);
-//                        um.Date=date;
-//                        um.Fat=String.valueOf(print.Fat);
-//                        um.Fibre=String.valueOf(print.Fibre);
-//                        um.Iron=print.Iron;
-//                        um.MealName=String.valueOf(print.Name);
-//                        um.Phosphorous=print.Phosphorous;
-//                        um.Protein=String.valueOf(print.Protein);
-//                        um.Calories=String.valueOf(cal);
+
 
 
 
@@ -230,11 +209,14 @@ public class FoodResults extends AppCompatActivity {
                     }
 
                     databaseReferenceUserMeals.child(String.valueOf(date+"-"+count)).setValue(um);
-                    if(consumed<GoalFromDB){
-                        remarks.setText("You have "+(GoalFromDB-consumed)+ " calories left");
+                    if(consumed+Float.parseFloat(calories.getText().toString())<GoalFromDB){
+                        remarks.setText("You have "+(GoalFromDB-consumed-Float.parseFloat(calories.getText().toString()))+ " calories left");
+                        Toast.makeText(getApplicationContext(),String.valueOf("You have "+(GoalFromDB-consumed-Float.parseFloat(calories.getText().toString()))+ " calories left"),Toast.LENGTH_LONG).show();
                     }
                     else{
-                        remarks.setText("Oh no, you have reached the calorie limit");
+                        remarks.setText("Oh no, you have reached the calorie limit.");
+                        remarks.setTextColor(getResources().getColor(R.color.red));
+                        Toast.makeText(getApplicationContext(),"Oh no, you have reached the calorie limit.",Toast.LENGTH_LONG).show();
                     }
 
 

@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import static com.fitpal.fitpal.MainActivity.GoalFromDB;
@@ -37,8 +38,8 @@ public class VoiceInput extends AppCompatActivity {
     private final int REQ_CODE_SPEECH_INPUT = 100;
     private ArrayList<String> result;
     private Button resultOk;
-    int count=1;
-    float consumed=0;
+    static int count=1;
+    static float consumed=0;
 
     DatabaseReference databaseReference,databaseReferenceUserMeals;
 
@@ -47,6 +48,9 @@ public class VoiceInput extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_input);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         txtSpeechInput = (TextView) findViewById(R.id.txtSpeechInput);
         btnSpeakButton = (ImageButton) findViewById(R.id.btnSpeak);
@@ -92,8 +96,11 @@ public class VoiceInput extends AppCompatActivity {
 
         databaseReferenceUserMeals.addValueEventListener(new ValueEventListener() {
 
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                consumed=0;
+                count=1;
 
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
 

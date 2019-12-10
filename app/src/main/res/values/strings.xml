@@ -17,11 +17,20 @@
     <string name="height">Height</string>
     <string name="weight">Weight</string>
     <string name="gender">Gender</string>
+    <string name="goal">Goal</string>
     <string name="promptGender">Choose your gender</string>
 
     <string-array name="genderOptions">
         <item>Male</item>
         <item>Female</item>
+    </string-array>
+
+    <string name="promptGoal">Choose your goal</string>
+
+    <string-array name="goalOptions">
+        <item>Weight Loss</item>
+        <item>Weight Gain</item>
+        <item>Maintain health</item>
     </string-array>
 
     <string name="app_slogan">monitors what you eat and stay fit and stay healthy</string>

@@ -38,6 +38,6 @@
         app:line_speed="6"
         app:line_width="4"
         app:square_height="400"
-        app:square_width="330" />
+        app:square_width="350" />
 
 </RelativeLayout>

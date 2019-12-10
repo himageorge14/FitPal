@@ -2,6 +2,7 @@ package com.fitpal.fitpal;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -51,10 +52,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     DatabaseReference databaseReference;
 
     private static final int REQUEST_CODE=9001;
+    public int reqCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         setContentView(R.layout.activity_login);
         error_msg=(TextView)findViewById(R.id.errorID);
         signInButton=(SignInButton)findViewById(R.id.signinID);
@@ -121,6 +127,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        reqCode=requestCode;
 
         if (requestCode == REQUEST_CODE) {
             // The Task returned from this call is always completed, no need to attach
@@ -232,7 +239,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onStart() {
         super.onStart();
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        updateUI(account);
+//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+//        updateUI(account);
     }
 }

@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import info.androidhive.barcode.BarcodeReader;
@@ -45,6 +46,9 @@ public class BarcodeInput extends AppCompatActivity implements BarcodeReader.Bar
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barcode_input);
         barcodeReader = getSupportFragmentManager().findFragmentById(R.id.barcode_scanner);
@@ -80,24 +84,26 @@ public class BarcodeInput extends AppCompatActivity implements BarcodeReader.Bar
                             JSONObject j=response.getJSONObject("product");
                             brand=j.get("brands").toString();
                             Log.d("bbb",brand);
-//                            JSONObject j2=j.getJSONObject("images");
-//                            Log.d("img",String.valueOf(j2));
-//                            JSONObject j3=j2.getJSONObject("ingredients_fr");
-//                            Log.d("ifr",String.valueOf(j3));
-//                            JSONObject j4=j3.getJSONObject("nutriscore_points");
-//                            Log.d("nutr",String.valueOf(j4));
 
                             String size=j.get("serving_size").toString();
                             String product=j.get("product_name_fr").toString();
                             String ingr=j.get("ingredients_text").toString();
                             String nutrScore=j.get("nutrition_score_debug").toString();
 
+                            String carbsBar=j.getJSONObject("nutriments").get("carbohydrates_value").toString();
+                            String fatsBar=j.getJSONObject("nutriments").get("fat_value").toString();
+                            String fiberBar=j.getJSONObject("nutriments").get("fiber_serving").toString();
+                            String caloriesBar=j.getJSONObject("nutriments").get("energy-kcal_serving").toString();
+                            String proteinBar=j.getJSONObject("nutriments").get("proteins_serving").toString();
+                            String calciumBar=j.getJSONObject("nutriments").get("calcium").toString();
+
 
                             String code=barcode.displayValue;
 
 //                            Toast.makeText(getApplicationContext(),String.valueOf(response),Toast.LENGTH_LONG).show();
 //                            Toast.makeText(getApplicationContext(),brand,Toast.LENGTH_LONG).show();
-
+//                            Toast.makeText(getApplicationContext(),brand,Toast.LENGTH_LONG).show();
+                          //  carbohydrates_serving
                             Intent i=new Intent(getApplicationContext(),BarcodeResults.class);
                             i.putExtra("page","barcode");
                             i.putExtra("brand",brand);
@@ -106,6 +112,14 @@ public class BarcodeInput extends AppCompatActivity implements BarcodeReader.Bar
                             i.putExtra("ingr",ingr);
                             i.putExtra("nutr",nutrScore);
                             i.putExtra("barcode",barcode.displayValue);
+
+                            i.putExtra("calcium",calciumBar);
+                            i.putExtra("protein",proteinBar);
+                            i.putExtra("calories",caloriesBar);
+                            i.putExtra("fiber",fiberBar);
+                            i.putExtra("fats",fatsBar);
+                            i.putExtra("carbs",carbsBar);
+
                             startActivity(i);
                             finish();
 
