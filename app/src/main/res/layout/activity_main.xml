@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -18,31 +19,153 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="5"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/voiceRedirectButtonId"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_margin="40dp"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/main_button"
-            android:text="@string/voice"
-            android:textColor="@color/white"
-            android:textSize="25dp" />
 
-        <Button
-            android:id="@+id/barcodeRedirectButtonId"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_margin="40dp"
-            android:layout_marginTop="0dp"
-            android:background="@drawable/main_button"
-            android:text="@string/barcode"
-            android:textColor="@color/white"
-            android:textSize="25dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/voiceRedirectButtonId"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:background="@drawable/main_button"
+                android:text="@string/voice"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/barcodeRedirectButtonId"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:background="@drawable/main_button"
+                android:text="@string/barcode"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/manualRedirectButtonId"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/main_button"
+                android:text="@string/manual"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/locationRedirectButtonId"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:background="@drawable/main_button"
+                android:text="@string/location"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/imageRedirectButtonId"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/main_button"
+                android:text="@string/image"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/groupRedirectButtonId"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:background="@drawable/main_button"
+                android:text="@string/group"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/reportRedirectButtonId"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/main_button"
+                android:text="@string/report"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/UserDetsButtonId"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:background="@drawable/main_button"
+                android:text="@string/userDets"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/recommendRedirectButtonId"
+                android:layout_width="250dp"
+                android:layout_height="70dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/main_button"
+                android:text="@string/recommend"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+
+
+
+        </LinearLayout>
+
+
+
+
     </LinearLayout>
 
     <LinearLayout

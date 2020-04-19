@@ -50,6 +50,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private TextView error_msg;
     FirebaseAuth mAuth;
     DatabaseReference databaseReference;
+    Users f1;
 
     private static final int REQUEST_CODE=9001;
     public int reqCode;
@@ -64,6 +65,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_login);
         error_msg=(TextView)findViewById(R.id.errorID);
         signInButton=(SignInButton)findViewById(R.id.signinID);
+
+        f1=new Users();
 
         String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
@@ -177,7 +180,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
 
-                        Users f1 = dataSnapshot1.getValue(Users.class);
+                        f1 = dataSnapshot1.getValue(Users.class);
                         Log.d("userrrr",String.valueOf(f1));
 
 

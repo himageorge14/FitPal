@@ -7,7 +7,8 @@
     <string name="tap_on_mic">Tap on mic to speak</string>
     <string name="voice">Voice</string>
     <string name="signout">Sign Out</string>
-    <string name="barcode">Barcode</string>\
+    <string name="barcode">Barcode</string>
+    <string name="manual">Manual</string>
     <string name="msg_no_food_found">No food found</string>
 
     <string name="submit">Submit</string>
@@ -47,6 +48,20 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="location">Locations</string>
+    <string name="group">Group</string>
+    <string name="image">Image</string>
+    <string name="report">Reports</string>
+    <string name="recommend">Meal Recommendation</string>
+    <string name="search">Search</string>
+    <string name="userDets">User Details</string>
+    <string name="profile">PROFILE</string>
+
+
+    <string name="ipaddress">192.168.1.102:3000</string>
+
+    <string name="google_maps_key"></string>
+
 
 </resources>
 

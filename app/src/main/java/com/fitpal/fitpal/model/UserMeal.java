@@ -28,4 +28,13 @@ public class UserMeal {
         Phosphorous = phosphorous;
         Protein = protein;
     }
+//
+//    public String getDate1() {
+//        return Date;
+//    }
+//
+//
+//    public String getMealName() {
+//        return MealName;
+//    }
 }

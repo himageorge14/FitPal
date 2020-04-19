@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fitpal.fitpal.model.UserHistory;
 import com.fitpal.fitpal.model.Users;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +29,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 import static com.fitpal.fitpal.Login.Email;
@@ -44,7 +48,7 @@ public class BmiInput extends AppCompatActivity{
     float bmiActual;
     String genderVal,emailBmi,goalStr;
     Button submit;
-    DatabaseReference databaseUsers;
+    DatabaseReference databaseUsers,databaseUserHistory;
     ArrayList<Users> usersArrayList;
 
     @Override
@@ -69,6 +73,7 @@ public class BmiInput extends AppCompatActivity{
         welcomeText.setText("Welcome "+Name+ ", please enter these details");
 
         databaseUsers=FirebaseDatabase.getInstance().getReference("Users");
+        databaseUserHistory=FirebaseDatabase.getInstance().getReference("UserHistory");
 
         databaseUsers.addValueEventListener(new ValueEventListener() {
             @Override
@@ -209,7 +214,13 @@ public class BmiInput extends AppCompatActivity{
 
                     String id=String.valueOf(usersArrayList.size()+1);
                     Users u = new Users(ageNo,bmiActual,emailBmi,genderVal,goalNo,heightNo,i1,weightNo);
+                    UserHistory uH=new UserHistory(bmiActual,heightNo,weightNo);
+
                     databaseUsers.child(id).setValue(u);
+
+//                    String date= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+//
+//                    databaseUserHistory.child(String.valueOf(i1)).child(date).setValue(uH);
 
                     Intent i=new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(i);

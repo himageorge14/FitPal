@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <!--<group android:checkableBehavior="single">-->
+        <!--<item-->
+            <!--android:id="@+id/nav_donate"-->
+            <!--android:icon="@drawable/donate"-->
+            <!--android:title="@string/donate"-->
+            <!--/>-->
+        <!--<item-->
+            <!--android:id="@+id/nav_blood"-->
+            <!--android:icon="@drawable/blood"-->
+            <!--android:title="@string/request_blood" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_aboutUs"-->
+            <!--android:icon="@drawable/aboutus"-->
+            <!--android:title="@string/about_us" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_profile"-->
+            <!--android:icon="@drawable/edit"-->
+            <!--android:title="@string/edit_profile" />-->
+
+
+        <!--<group-->
+            <!--android:id="@+id/menu_bottom">-->
+
+            <!--<item-->
+                <!--android:id="@+id/fb"-->
+                <!--android:icon="@drawable/fbicon"-->
+                <!--android:title="Facebook"-->
+                <!--app:showAsAction="always"/>-->
+
+            <!--<item-->
+                <!--android:id="@+id/insta"-->
+                <!--android:icon="@drawable/instaicon"-->
+                <!--android:title="Instagram"-->
+                <!--app:showAsAction="always"/>-->
+            <!--<item-->
+                <!--android:id="@+id/linkedin"-->
+                <!--android:icon="@drawable/linkedinicon"-->
+                <!--android:title="LinkedIn"-->
+                <!--app:showAsAction="always"/>-->
+            <!--<item-->
+                <!--android:id="@+id/twitter"-->
+                <!--android:icon="@drawable/twittericon"-->
+                <!--android:title="Twitter"-->
+                <!--app:showAsAction="always"/>-->
+
+
+
+        <!--</group>-->
+
+        <!--<item-->
+            <!--android:id="@+id/logoutId"-->
+            <!--android:icon="@drawable/logout"-->
+            <!--android:title="@string/logout" />-->
+    <!--</group>-->
+
+</menu>

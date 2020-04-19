@@ -15,6 +15,30 @@
       },
       "oauth_client": [
         {
+          "client_id": "872548580608-kjjge86mdag8jkrfl203tc4e2cjseinh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fitpal.fitpal",
+            "certificate_hash": "9322ba77776188a82027ae035323c22696dcd533"
+          }
+        },
+        {
+          "client_id": "872548580608-nebqsaur0m43ss1bsuj1honvcuodnffs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fitpal.fitpal",
+            "certificate_hash": "684ea9ad109fed47f9eae6d69a974e8185ab033a"
+          }
+        },
+        {
+          "client_id": "872548580608-0qvt4ghhajmh8bfte466s6ltfs1lug0d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fitpal.fitpal",
+            "certificate_hash": "84526d481d97aeda790665dd5e05e8cbd1d17825"
+          }
+        },
+        {
           "client_id": "872548580608-7h43h2017qgs4rt8c2e032oc6c0seci4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

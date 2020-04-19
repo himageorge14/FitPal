@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context=".RestaurantResults">-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<LinearLayout android:orientation="vertical"
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main_content"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white"
+android:columnCount="2"
+android:rowCount="11"
+android:padding="10dp"
+    tools:context=".RestaurantResults"
+android:descendantFocusability="beforeDescendants"
+android:fitsSystemWindows="true"
+    >
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="RESTAURANTS NEAR YOU"
+    android:textAlignment="center"
+    android:textSize="20dp"
+    android:layout_margin="20dp"
+    >
+
+</TextView>
+<!--     card start-->
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/green_border"
+    android:layout_margin="20dp"
+
+    >
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+
+        <TextView
+
+
+            android:text="Restaurant Image 1"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp">
+            <TextView
+
+                android:text="Restaurant Name 1"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+            <TextView
+
+                android:text="Ratings : 4.2/5"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+            <TextView
+
+                android:text="Distance : 500m"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
+<!--    card start-->
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/green_border"
+    android:layout_margin="20dp"
+    >
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+
+            android:text="Restaurant Image 2"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp">
+            <TextView
+
+                android:text="Restaurant Name 2"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+            <TextView
+
+                android:text="Ratings : 4/5"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+            <TextView
+
+                android:text="Distance :800m"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
+<!--    card start-->
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/green_border"
+    android:layout_margin="20dp"
+    >
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+
+            android:text="Restaurant Image 3"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp">
+            <TextView
+
+                android:text="Restaurant Name 3"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+            <TextView
+
+                android:text="Ratings : 4.1/5"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+            <TextView
+
+                android:text="Distance : 1000m"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:padding="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
+<Button
+    android:id="@+id/show_more"
+    android:text="Show More"
+    android:textColor="@color/white"
+    android:textSize="15dp"
+    android:layout_margin="40dp"
+    android:layout_column="0"
+    android:layout_row="10"
+    android:padding="10dp"
+    android:background="@drawable/green_button"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent" />
+
+
+
+
+</LinearLayout>

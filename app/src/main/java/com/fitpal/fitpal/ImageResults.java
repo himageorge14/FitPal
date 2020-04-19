@@ -1,12 +1,10 @@
 package com.fitpal.fitpal;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
-//import android.support.v4.content.ContextCompat;
-//import android.support.v7.app.AppCompatActivity;
-//import android.support.v7.widget.Toolbar;
-
-
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,12 +20,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.fitpal.fitpal.model.FoodItem;
 import com.fitpal.fitpal.model.MySingletone;
 import com.fitpal.fitpal.model.UserMeal;
-import com.fitpal.fitpal.model.Users;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,18 +32,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.zip.DeflaterOutputStream;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 
 import static com.fitpal.fitpal.MainActivity.GoalFromDB;
 import static com.fitpal.fitpal.MainActivity.KeyUserMealsFromDB;
 import static com.fitpal.fitpal.VoiceInput.consumed;
 import static com.fitpal.fitpal.VoiceInput.count;
 
-public class FoodResults extends AppCompatActivity {
+public class ImageResults extends AppCompatActivity {
 
 
     private TextView name,carbs,energy,fat,protein,mineral,calcium,fibre,calories,remarks;
@@ -58,7 +47,7 @@ public class FoodResults extends AppCompatActivity {
     DatabaseReference databaseReference,databaseReferenceUserMeals;
     FoodItem print;
     UserMeal um;
-//    float consumed;
+    //    float consumed;
 //    int count;
     float tempCalToSubtract = 0;
 
@@ -68,41 +57,48 @@ public class FoodResults extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_results);
+        setContentView(R.layout.activity_image_results);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-
-        name=findViewById(R.id.FoodNameId);
-        carbs=findViewById(R.id.CarbId);
-        energy=findViewById(R.id.EnergyId);
-        fat=findViewById(R.id.FatId);
-        protein=findViewById(R.id.ProteinId);
-        mineral=findViewById(R.id.MineralsId);
-        calcium=findViewById(R.id.CalciumId);
-        fibre=findViewById(R.id.FibreId);
-        calories=findViewById(R.id.CaloriesId);
-
-        remarks=findViewById(R.id.RemarksID);
-
-        readAgain=findViewById(R.id.ReadAgainID);
-
         Intent in=getIntent();
 
 
-        foodToSearch=in.getStringExtra("foodresult");
-        page=in.getStringExtra("page");
+        foodToSearch=in.getStringExtra("dishImageName");
+        //foodToSearch="idli sambar";
+
+        name=findViewById(R.id.IFoodNameId);
+        carbs=findViewById(R.id.ICarbId);
+        energy=findViewById(R.id.IEnergyId);
+        fat=findViewById(R.id.IFatId);
+        protein=findViewById(R.id.IProteinId);
+        mineral=findViewById(R.id.IMineralsId);
+        calcium=findViewById(R.id.ICalciumId);
+        fibre=findViewById(R.id.IFibreId);
+        calories=findViewById(R.id.ICaloriesId);
+
+        remarks=findViewById(R.id.IRemarksID);
+
+        readAgain=findViewById(R.id.IReadAgainID);
+
+
+       // page=in.getStringExtra("page");
 //        consumed=in.getFloatExtra("consumned",0);
 //        count=in.getIntExtra("count",1);
 //
 //        Log.d("con",String.valueOf(consumed));
 //        Log.d("counttt",String.valueOf(count));
 
+
+
+
+        //foodToSearch="bread";
+
         Log.d("outtttt",foodToSearch);
 
         //databaseReference = FirebaseDatabase.getInstance().getReference("Foods");
-       databaseReferenceUserMeals=FirebaseDatabase.getInstance().getReference("UserMeals").child(String.valueOf(KeyUserMealsFromDB));
+        databaseReferenceUserMeals=FirebaseDatabase.getInstance().getReference("UserMeals").child(String.valueOf(KeyUserMealsFromDB));
 
 
         x_app_id = "d2972203";
@@ -113,6 +109,8 @@ public class FoodResults extends AppCompatActivity {
         String url = "https://trackapi.nutritionix.com/v2/natural/nutrients";
         mQueue = MySingletone.getInstance(getApplicationContext()).getRequestQueue();
         JSONObject jsonObject1=new JSONObject();
+
+
 
         try {
             jsonObject1.put("query", foodToSearch);
@@ -146,10 +144,10 @@ public class FoodResults extends AppCompatActivity {
                 try {
 
 
-                   Log.d("resultssss",String.valueOf(response));
+                    Log.d("resultssss",String.valueOf(response));
 
                     JSONArray jsonArrayFoods=response.getJSONArray("foods");
-                   // Log.d("foodssss",String.valueOf(jsonArrayFoods));
+                    // Log.d("foodssss",String.valueOf(jsonArrayFoods));
 
                     JSONObject productFood=null;
 
@@ -185,7 +183,7 @@ public class FoodResults extends AppCompatActivity {
                         calories.setText(String.valueOf(productFood.get("nf_calories").toString()));
 
 
-                       date= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                        date= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
 
 
@@ -252,16 +250,10 @@ public class FoodResults extends AppCompatActivity {
         readAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(page.equalsIgnoreCase("Voice")){
-                    Intent i=new Intent(getApplicationContext(),VoiceInput.class);
-                    startActivity(i);
-                    finish();
-                }
-                else{
-                    Intent i=new Intent(getApplicationContext(),BarcodeInput.class);
-                    startActivity(i);
-                    finish();
-                }
+                Intent i=new Intent(getApplicationContext(),ImageHome.class);
+                startActivity(i);
+                finish();
+
             }
         });
 

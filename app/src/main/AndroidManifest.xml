@@ -4,6 +4,12 @@
     package="com.fitpal.fitpal">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -27,6 +33,26 @@
         <activity android:name=".FoodResults" />
         <activity android:name=".BarcodeResults" />
         <activity android:name=".BmiInput" />
+        <activity android:name=".ManualInput" />
+        <activity android:name=".ManualResults" />
+        <activity android:name=".LocationTrackingHome" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".ImageHome" />
+        <activity android:name=".GroupHome" />
+        <activity android:name=".Reports" />
+        <activity android:name=".RestaurantResults" />
+        <activity android:name=".UserDetailsPage" />
+        <activity android:name=".LocationTrackingResults" />
+        <activity android:name=".RecommendDishes" />
+        <activity android:name=".MyGroup" />
+        <activity android:name=".ChangeGroupPassword" />
+        <activity android:name=".GroupAddMember" />
+        <activity android:name=".ImageResults" />
+        <activity android:name=".FriendDetails"></activity>
     </application>
 
 </manifest>
