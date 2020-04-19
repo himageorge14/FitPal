@@ -88,14 +88,15 @@ public class BarcodeInput extends AppCompatActivity implements BarcodeReader.Bar
                             String size=j.get("serving_size").toString();
                             String product=j.get("product_name_fr").toString();
                             String ingr=j.get("ingredients_text").toString();
-                            String nutrScore=j.get("nutrition_score_debug").toString();
+//                            String nutrScore=j.get("nutrition_score_debug").toString();
+//                            String nutrScore=j.get("nutrition_score_debug").toString();
 
                             String carbsBar=j.getJSONObject("nutriments").get("carbohydrates_value").toString();
                             String fatsBar=j.getJSONObject("nutriments").get("fat_value").toString();
-                            String fiberBar=j.getJSONObject("nutriments").get("fiber_serving").toString();
+//                            String fiberBar=j.getJSONObject("nutriments").get("fiber_value").toString();
                             String caloriesBar=j.getJSONObject("nutriments").get("energy-kcal_serving").toString();
                             String proteinBar=j.getJSONObject("nutriments").get("proteins_serving").toString();
-                            String calciumBar=j.getJSONObject("nutriments").get("calcium").toString();
+//                            String calciumBar=j.getJSONObject("nutriments").get("calcium").toString();
 
 
                             String code=barcode.displayValue;
@@ -110,18 +111,18 @@ public class BarcodeInput extends AppCompatActivity implements BarcodeReader.Bar
                             i.putExtra("size",size);
                             i.putExtra("product",product);
                             i.putExtra("ingr",ingr);
-                            i.putExtra("nutr",nutrScore);
+                           // i.putExtra("nutr",nutrScore);
                             i.putExtra("barcode",barcode.displayValue);
 
-                            i.putExtra("calcium",calciumBar);
+   //                         i.putExtra("calcium",calciumBar);
                             i.putExtra("protein",proteinBar);
                             i.putExtra("calories",caloriesBar);
-                            i.putExtra("fiber",fiberBar);
+//                            i.putExtra("fiber",fiberBar);
                             i.putExtra("fats",fatsBar);
                             i.putExtra("carbs",carbsBar);
 
                             startActivity(i);
-                            finish();
+                            //finish();
 
 
                         } catch (JSONException e)
@@ -137,6 +138,7 @@ public class BarcodeInput extends AppCompatActivity implements BarcodeReader.Bar
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(BarcodeInput.this,error.toString(),Toast.LENGTH_LONG).show();
+                        Log.d("errr",error.toString());
                     }
                 }){
             @Override
@@ -171,5 +173,6 @@ public class BarcodeInput extends AppCompatActivity implements BarcodeReader.Bar
     @Override
     public void onScanError(String s) {
         Toast.makeText(getApplicationContext(), "Error occurred while scanning " + s, Toast.LENGTH_SHORT).show();
+        Log.d("serr","scaaa");
     }
 }

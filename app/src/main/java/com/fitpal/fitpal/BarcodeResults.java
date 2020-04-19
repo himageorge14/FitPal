@@ -100,12 +100,14 @@ public class BarcodeResults extends AppCompatActivity {
         br=t.getStringExtra("brand");
         si=t.getStringExtra("size");
         ing=t.getStringExtra("ingr");
-        nut=t.getStringExtra("nutr");
+       // nut=t.getStringExtra("nutr");
 
-        calc=t.getStringExtra("calcium");
+        //calc=t.getStringExtra("calcium");
+        calc="0";
         protein=t.getStringExtra("protein");
         fats=t.getStringExtra("fats");
-        fiber=t.getStringExtra("fiber");
+  //      fiber=t.getStringExtra("fiber");
+        fiber="0";
         carbs=t.getStringExtra("carbs");
         calories=t.getStringExtra("calories");
 
